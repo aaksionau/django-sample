@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-summernote = "*"
+"psycopg2-binary" = "*"
+"psycopg2" = "*"
+
+[dev-packages]
+"autopep8" = "*"
+pylint = "*"
+gulp = "*"
+coverage = "*"
+rope = "*"
+"fabric3" = "*"
+python-decouple = "*"
+django-debug-toolbar = "*"
+
+[requires]
+python_version = "3.7"

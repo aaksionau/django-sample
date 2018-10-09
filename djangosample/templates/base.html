@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        {% block pagetitle %}
+        {% endblock pagetitle %}
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    {% if DEBUG %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% else %}
+    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+    {% endif %}
+
+    {% block styles %} {% endblock styles %}
+    {% block jshead %} {% endblock jshead %}
+</head>
+
+<body>
+
+
+    {% include 'footer.html' %}
+    {% block jsfooter %}
+    {% endblock jsfooter %}
+
+    {% include 'analytics.html' %}
+</body>
+
+</html>
