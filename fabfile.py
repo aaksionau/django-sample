@@ -3,12 +3,11 @@ from fabric.operations import prompt, put
 from fabric.context_managers import prefix
 from fabric.contrib.console import confirm
 
-
-APP_DIR = "echb_project/echb/"
-APP_STATIC_DIR = "echb_static/"
-APP_APACHE_DIR = "echb_project/apache2/"
-
 PROJECT_NAME = "echb"
+
+APP_DIR = f"{PROJECT_NAME}_project/echb/"
+APP_STATIC_DIR = f"{PROJECT_NAME}_static/"
+APP_APACHE_DIR = f"{PROJECT_NAME}_project/apache2/"
 
 PYTHON_VERSION = "3.6"
 
@@ -17,6 +16,23 @@ env.hosts = ["webfaction"]
 env.remote_app_dir = f'/home/paloni/webapps/{APP_DIR}'
 env.remote_app_static_dir = f'/home/paloni/webapps/{APP_STATIC_DIR}'
 env.remote_apache_dir = f'/home/paloni/webapps/{APP_APACHE_DIR}'
+
+command = "python manage.py {} --settings=echb.settings.local"
+
+
+@task
+def runserver():
+    local(command.format('runserver'))
+
+
+@task
+def makemigrations():
+    local(command.format('makemigrations'))
+
+
+@task
+def migrate():
+    local(command.format('migrate'))
 
 
 @task
